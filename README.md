@@ -1,4 +1,4 @@
-📱 Flutter Twilio Voice Calling App
+📱 Flutter Twilio Voice Calling App (Node readme is inside the \\twilio token server\\ folder)
 
 A Flutter application that integrates Twilio Programmable Voice to make and receive voice calls between users using your custom Node.js backend as the token + TwiML server.
 
