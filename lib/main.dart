@@ -15,24 +15,11 @@ import 'package:sample_project/firebase_options.dart';
 import 'package:sample_project/screens/ui_call_screen.dart';
 
 import 'utils.dart';
-// +19712656927
 
-String token1 =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM3OTY1NDUwNTc3M2I1ODAyZTdiMDA3M2Y4MDAzYTU5LTE3NjIzNzgyODkiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJBbGljZUlkIiwidm9pY2UiOnsiaW5jb21pbmciOnsiYWxsb3ciOnRydWV9LCJvdXRnb2luZyI6eyJhcHBsaWNhdGlvbl9zaWQiOiJBUDU0ZTgxN2RlMzNiMTgzNDhiYjYxZGQ4NDZlODUxOGY4In0sInB1c2hfY3JlZGVudGlhbF9zaWQiOiJDUjhiZmM0MTc2MTlhNjE2ODVjMjFkZDUyOGQzZjliNGUzIn19LCJpYXQiOjE3NjIzNzgyODksImV4cCI6MTc2MjM4MTg4OSwiaXNzIjoiU0szNzk2NTQ1MDU3NzNiNTgwMmU3YjAwNzNmODAwM2E1OSIsInN1YiI6IkFDZWZiYTBhMTc5MjRhZmQwZjViYmQzOTNmNTk3OTM5MjgifQ.tTs8OFyc5-d1MYjklKHuYuilV3jaOM1UXEAZyGPLBhE';
+String token1 = '';
 String client1ID = "AliceId";
-String token2 =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM3OTY1NDUwNTc3M2I1ODAyZTdiMDA3M2Y4MDAzYTU5LTE3NjIzNzg1MDAiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJCb2JJZCIsInZvaWNlIjp7ImluY29taW5nIjp7ImFsbG93Ijp0cnVlfSwib3V0Z29pbmciOnsiYXBwbGljYXRpb25fc2lkIjoiQVA1NGU4MTdkZTMzYjE4MzQ4YmI2MWRkODQ2ZTg1MThmOCJ9LCJwdXNoX2NyZWRlbnRpYWxfc2lkIjoiQ1I4YmZjNDE3NjE5YTYxNjg1YzIxZGQ1MjhkM2Y5YjRlMyJ9fSwiaWF0IjoxNzYyMzc4NTAwLCJleHAiOjE3NjIzODIxMDAsImlzcyI6IlNLMzc5NjU0NTA1NzczYjU4MDJlN2IwMDczZjgwMDNhNTkiLCJzdWIiOiJBQ2VmYmEwYTE3OTI0YWZkMGY1YmJkMzkzZjU5NzkzOTI4In0.sKxycbsZNT6NDVux1Gy2qpXYzNCcofMWhQFwveixx6I';
+String token2 = '';
 String client2ID = "BobId";
-
-extension IterableExtension<E> on Iterable<E> {
-  /// Extension on [Iterable]'s [firstWhere] that returns null if no element is found instead of throwing an exception.
-  E? firstWhereOrNull(bool Function(E element) test, {E Function()? orElse}) {
-    for (E element in this) {
-      if (test(element)) return element;
-    }
-    return (orElse == null) ? null : orElse();
-  }
-}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,15 +56,7 @@ class RegisterAs extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  // bool? isRegistered =
-                  //     await TwilioVoice.instance.registerPhoneAccount();
-                  // // if (isRegistered ?? false) {
-                  // TwilioVoice.instance.openPhoneAccountSettings();
-                  // bool? isEnabled =
-                  //     await TwilioVoice.instance.isPhoneAccountEnabled();
-                  // log("Phone account registration status: $isEnabled");
-                  TwilioVoice.instance
-                      .requestCallPhonePermission(); // Gives Android permissions to place calls
+                  TwilioVoice.instance.requestCallPhonePermission();
                   TwilioVoice.instance.requestReadPhoneStatePermission();
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
@@ -140,7 +119,6 @@ class _AppState extends State<App> {
       }
     });
 
-    listenForEvents();
     register();
   }
 
@@ -177,25 +155,19 @@ class _AppState extends State<App> {
                 ElevatedButton(
                   onPressed: () {
                     playAudioOnCall(
-                      callSid, // Store this when call connects
-                      'https://demo.twilio.com/docs/classic.mp3', // Public URL of your audio
+                      callSid,
+                      'https://demo.twilio.com/docs/classic.mp3',
                     );
                   },
                   child: Text("Play recording in call"),
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child:
-                        // twilioInit
-                        //     ?
-                        UICallScreen(
-                      userId: userId,
-                      onPerformCall: _onPerformCall,
-                    )
-                    // : UIRegistrationScreen(
-                    //     onRegister: _onRegisterWithToken,
-                    //   ),
-                    ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: UICallScreen(
+                    userId: userId,
+                    onPerformCall: _onPerformCall,
+                  ),
+                ),
               ],
             ),
           ),
@@ -210,7 +182,6 @@ class _AppState extends State<App> {
       final response = await dio.post(
         'https://jamaal-chylaceous-nonsectionally.ngrok-free.dev/play-audio',
         data: {
-          // 'callSid': callSid,
           'audioUrl': audioUrl,
         },
       );
@@ -219,20 +190,6 @@ class _AppState extends State<App> {
       log('Error: $e');
     }
   }
-  // void _showWebIncomingCallDialog() async {
-  //   showingIncomingCallDialog = true;
-  //   final activeCall = TwilioVoice.instance.call.activeCall!;
-  //   final action = await showIncomingCallScreen(context, activeCall);
-  //   if (action == true) {
-  //     printDebug("accepting call");
-  //     TwilioVoice.instance.call.answer();
-  //   } else if (action == false) {
-  //     printDebug("rejecting call");
-  //     TwilioVoice.instance.call.hangUp();
-  //   } else {
-  //     printDebug("no action");
-  //   }
-  // }
 
   Future<bool?> showIncomingCallScreen(
       BuildContext context, ActiveCall activeCall) async {
@@ -312,64 +269,6 @@ class _AppState extends State<App> {
     return _registerAccessToken(myToken);
   }
 
-  // Future<bool> _registerFromCredentials(String identity, String token) async {
-  //   userId = identity;
-  //   return _registerAccessToken(token);
-  // }
-
-  void listenForEvents() {
-    TwilioVoice.instance.callEventsListener.listen((event) async {
-      switch (event) {
-        // case CallEvent.initiated:
-        //   log("Call Initiated: ${event.toString()}");
-        //   break;
-        case CallEvent.incoming:
-          log("Incoming Call Event: ${event.toString()}");
-          break;
-        case CallEvent.ringing:
-          log("Ringing Event: ${event.toString()}");
-          break;
-        case CallEvent.connected:
-          {
-            log("Call Connected: ${event.toString()}");
-            await checkActiveCall();
-          }
-          break;
-        case CallEvent.callEnded:
-          log("Call Ended: ${event.toString()}");
-          break;
-        default:
-          log("Other Event: ${event.toString()}");
-      }
-    });
-  }
-
-  Future<void> checkActiveCall() async {
-    try {
-      final dio = Dio(BaseOptions(
-          baseUrl: 'https://jamaal-chylaceous-nonsectionally.ngrok-free.dev'));
-
-      final response = await dio.get('/call');
-      // ignore: prefer_interpolation_to_compose_strings
-      // log("call data: " + response.data);
-      callSid = response.data['sid'];
-      // if (response.data['active'] == true) {
-      //   final call = response.data['call'];
-      //   print('Active call: ${call['sid']} to ${call['to']}');
-      // } else {
-      //   print('No active call.');
-      // }
-    } catch (e) {
-      log('Error fetching active call: $e');
-    }
-  }
-
-// "client:"
-//           "e7474e57-0453-4108-a202-96238a8e2f64"
-//           "?displayName=Mike Tyson&language=pakistani&isRejoin=false&linguist=Barts linguist238"
-//           "&BookingId=LS164876&customerDeviceId=2748&LinguistEmailAddress=mohsinlatif@autosmarttech.com"
-//           "&to=e7474e57-0453-4108-a202-96238a8e2f64&gender=Male&lastCallStartTime=null&organizationName=org123"
-//           "&subject=Booking Views&startDate=(2025-04-18 12:01:53.060885&duration=15",
   Future<void> _onPerformCall(String clientIdentifier) async {
     if (!await (TwilioVoice.instance.hasMicAccess())) {
       printDebug("request mic access");
@@ -386,25 +285,6 @@ class _AppState extends State<App> {
       },
     );
   }
-
-  // Future<void> _onRegisterWithToken([String? identity]) async {
-  //   return _registerFromCredentials(identity ?? "Unknown", userToken)
-  //       .then((value) {
-  //     if (!value) {
-  //       showDialog(
-  //         context: context,
-  //         builder: (context) => const AlertDialog(
-  //           title: Text("Error"),
-  //           content: Text("Failed to register for calls"),
-  //         ),
-  //       );
-  //     } else {
-  //       setState(() {
-  //         twilioInit = true;
-  //       });
-  //     }
-  //   });
-  // }
 }
 
 class _LogoutAction extends StatelessWidget {
