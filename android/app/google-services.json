@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "196648786191",
+    "project_id": "sample-project-985f9",
+    "storage_bucket": "sample-project-985f9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196648786191:android:aa24e9bdd5a2d99403867a",
+        "android_client_info": {
+          "package_name": "com.autosmarttech.interpretingApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-xWCgQXCeHlEdg3IEFbbeSlb37aW7uLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196648786191:android:08b215a0959e1c4603867a",
+        "android_client_info": {
+          "package_name": "com.example.sample_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-xWCgQXCeHlEdg3IEFbbeSlb37aW7uLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196648786191:android:f62f9b8a2c8290b103867a",
+        "android_client_info": {
+          "package_name": "com.twilio.twilio_voice_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-xWCgQXCeHlEdg3IEFbbeSlb37aW7uLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
