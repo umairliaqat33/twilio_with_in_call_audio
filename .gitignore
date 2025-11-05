@@ -45,3 +45,4 @@ app.*.map.json
 
 /twilio_sample_in-app_call/twilio-backend/.env
 /twilio-token-server/twilio-backend/.env
+/twilio-token-server/.env
