@@ -43,6 +43,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-/twilio_sample_in-app_call/twilio-backend/.env
-/twilio-token-server/twilio-backend/.env
-/twilio-token-server/.env
+# /twilio_sample_in-app_call/twilio-backend/.env
+# /twilio-token-server/twilio-backend/.env
+# /twilio-token-server/.env
